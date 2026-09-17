@@ -1,0 +1,22 @@
+# ============================================================================
+# Opsional: PostgreSQL lokal untuk pengembangan (tanpa Supabase cloud).
+# Jalankan:  docker compose up -d
+# URL:       postgresql://postgres:postgres@localhost:54322/postgres
+# ============================================================================
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: fompa-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "54322:5432"
+    volumes:
+      - fompa_pgdata:/var/lib/postgresql/data
+      - ./supabase:/docker-entrypoint-initdb.d:ro
+
+volumes:
+  fompa_pgdata:
