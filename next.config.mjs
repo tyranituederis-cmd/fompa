@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  serverExternalPackages: ['pdf-parse'],
   reactStrictMode: true,
   images: {
     remotePatterns: [
@@ -7,9 +8,7 @@ const nextConfig = {
       { protocol: "http", hostname: "**" },
     ],
   },
-  experimental: {
-    serverComponentsExternalPackages: ["@supabase/ssr"],
-  },
+  
 };
 
 export default nextConfig;
